@@ -40,6 +40,7 @@ interface ToolbarState {
   toolSets: Array<Array<ToggleData | TextListData | ColorListData>>;
   formats: object;
   theme: ToolbarTheme;
+  separatorColor: string;
   defaultFontFamily?: string;
 }
 
@@ -54,6 +55,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
       toolSets: [],
       formats: {},
       theme: lightTheme,
+      separatorColor: '',
       defaultFontFamily: undefined,
     };
   }
@@ -134,7 +136,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
 
   renderToolbar = () => {
     const { styles, custom } = this.props;
-    const { toolSets, theme, formats } = this.state;
+    const { toolSets, theme, formats, separatorColor } = this.state;
     const defaultStyles = makeStyles(theme);
 
     const toolbarStyle = styles?.toolbar?.root
@@ -161,7 +163,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
                   <React.Fragment key={index}>
                     <ToolSet tools={object} />
                     {toolSets.length > index && (
-                      <ToolbarSeparator color={theme.color} />
+                      <ToolbarSeparator color={separatorColor} />
                     )}
                   </React.Fragment>
                 )
