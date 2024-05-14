@@ -33,6 +33,7 @@ interface QuillToolbarProps {
   editor: React.RefObject<QuillEditor>;
   theme: ToolbarTheme | 'dark' | 'light';
   custom?: ToolbarCustom;
+  separatorColor: string;
   container?: false | 'avoiding-view' | React.ComponentType;
 }
 
@@ -55,7 +56,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
       toolSets: [],
       formats: {},
       theme: lightTheme,
-      separatorColor: '',
+      separatorColor: props.separatorColor,
       defaultFontFamily: undefined,
     };
   }
